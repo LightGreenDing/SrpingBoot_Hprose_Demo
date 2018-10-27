@@ -1,6 +1,7 @@
 # SrpingBoot_Hprose_Demo
-SpringBoot集成JPA,Hprose，Rabbitmq，Redis等
+SpringBoot集成JPA,Hprose，Rabbitmq，Redis！
 DemoApplication 是启动入口，application.properties是配置文件。
+
 com.example.demo下各包解释：
 base：下是父类 用来服务继承，里边封装了返回格式
 config： 下是配置文件类 包含redis和rabbitmq的配置文件
