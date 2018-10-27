@@ -1,2 +1,2 @@
 # SrpingBoot_Hprose_Demo
-首次上传
+SpringBoot集成JPA,Hprose，Rabbitmq，Redis等
