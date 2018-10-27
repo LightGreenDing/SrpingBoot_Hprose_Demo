@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 /**
  * 父类Servic
+ * 定义返回数据封装
  *
  * @author Ding.Jie
  */

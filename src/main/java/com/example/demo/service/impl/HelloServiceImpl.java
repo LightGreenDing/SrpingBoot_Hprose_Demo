@@ -37,22 +37,23 @@ public class HelloServiceImpl extends BaseService implements HelloService {
         ResultData resultData = JSON.parseObject(request, new TypeReference<ResultData>() {
         });
         System.out.println(resultData);
-        User user = userDao.findUserById(1);
-        ResponeResult success = success(user);
+        ResponeResult success = success("调用sayHello成功");
         return JSON.toJSONString(success);
     }
 
     @Override
     public String sayBye(String request) {
-        ResponeResult error = error(700, "手机号错误");
+        ResponeResult error = error(700, "返回错误接口测试");
 //        ResponeResult error = error();
         return JSON.toJSONString(error);
     }
 
     @Override
     public String getUser(String request) {
-        System.out.println("getUser方法");
-        User user = userDao.findUserById(1);
+        ResultData resultData = JSON.parseObject(request, new TypeReference<ResultData>() {
+        });
+        System.out.println(resultData);
+        User user = userDao.findUserById(Integer.valueOf(resultData.getData().getTemplateid()));
         ResponeResult success = success(user);
         return JSON.toJSONString(success);
     }

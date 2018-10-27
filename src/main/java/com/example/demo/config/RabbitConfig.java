@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * RabbitConfig
- * Created by Ding.Jie on 2018/10/25
+ * @author DingJie
  */
 
 @Configuration

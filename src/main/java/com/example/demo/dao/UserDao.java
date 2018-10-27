@@ -12,7 +12,7 @@ import java.util.List;
 
 /**
  * 用户DAO
- * Created by Ding.Jie on 2018/10/24
+ * @author DingJie
  */
 @CacheConfig(cacheNames = "users")
 public interface UserDao extends JpaRepository<User, Integer> {
@@ -25,10 +25,6 @@ public interface UserDao extends JpaRepository<User, Integer> {
      */
     @Cacheable(key = "'user_'+#p0")
     User findUserById(Integer id);
-
-//    @CachePut(key = "'user_'+#id")
-//    void updataUserById(@Param("id") Integer id, @Param("name") String name);
-
     /**
      * 通过ID删除用户
      * @param id 用户id

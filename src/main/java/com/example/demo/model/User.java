@@ -8,7 +8,7 @@ import java.io.Serializable;
 
 /**
  * 用户对象
- * Created by Ding.Jie on 2018/10/20
+ * @author DingJie
  */
 @Entity
 @Table(name = "wowo_user")
