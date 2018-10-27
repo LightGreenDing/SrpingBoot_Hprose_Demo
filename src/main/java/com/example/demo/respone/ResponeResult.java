@@ -1,4 +1,4 @@
-package com.example.demo.base;
+package com.example.demo.respone;
 
 /**
  * http请求返回的最外层对象
