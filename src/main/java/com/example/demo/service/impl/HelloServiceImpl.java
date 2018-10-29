@@ -3,12 +3,15 @@ package com.example.demo.service.impl;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.TypeReference;
 import com.example.demo.base.BaseService;
-import com.example.demo.respone.ResponeResult;
 import com.example.demo.dao.UserDao;
 import com.example.demo.model.User;
 import com.example.demo.request.ResultData;
+import com.example.demo.respone.ResponeResult;
 import com.example.demo.service.HelloService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -34,7 +37,9 @@ public class HelloServiceImpl extends BaseService implements HelloService {
         ResultData resultData = JSON.parseObject(request, new TypeReference<ResultData>() {
         });
         System.out.println(resultData);
-        ResponeResult success = success("调用sayHello成功");
+        Pageable pageable = PageRequest.of(1, 10);
+        Page<User> all = userDao.findAll(pageable);
+        ResponeResult success = success(all);
         return JSON.toJSONString(success);
     }
 
@@ -61,6 +66,14 @@ public class HelloServiceImpl extends BaseService implements HelloService {
         System.out.println("removeUser方法");
         userDao.removeById(9374175);
         ResponeResult success = success();
+        return JSON.toJSONString(success);
+    }
+
+    @Override
+    public String findUsers(int page, int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        Page<User> all = userDao.findAll(pageable);
+        ResponeResult success = success(all);
         return JSON.toJSONString(success);
     }
 }

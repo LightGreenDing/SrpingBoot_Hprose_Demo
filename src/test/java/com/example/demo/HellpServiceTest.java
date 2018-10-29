@@ -1,13 +1,20 @@
 package com.example.demo;
 
+import com.example.demo.dao.UserDao;
+import com.example.demo.model.User;
 import com.example.demo.service.HelloService;
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Ding.Jie on 2018/10/24
@@ -18,6 +25,8 @@ public class HellpServiceTest {
     @Autowired
     private HelloService helloService;
 
+    @Autowired
+    private UserDao userDao;
     @Autowired
     private AmqpTemplate rabbitTemplate;
 
@@ -31,6 +40,7 @@ public class HellpServiceTest {
         String user = helloService.getUser("");
         System.err.println(user);
     }
+
     @Test
     public void sendMessage() {
         //发送消息
@@ -46,4 +56,36 @@ public class HellpServiceTest {
 //    public void receive(String message) {
 //        System.out.println("接收消息:" + message);
 //    }
+
+    //    @Test
+//    public void testSave() {
+//        List<User> users = new ArrayList<>();
+//        for (int i = 0; i < 25; i++) {
+//            User user = new User();
+//            user.setName("测试用户：" + i + "号");
+//            user.setAge(i);
+//            users.add(user);
+//        }
+//        userDao.saveAll(users);
+//    }
+    @Test
+    public void testSave() {
+        List<User> users = new ArrayList<>();
+        for (int i = 0; i < 25; i++) {
+            User user = new User();
+            user.setName("测试用户：" + i + "号");
+            user.setAge(i);
+            users.add(user);
+        }
+        userDao.saveAll(users);
+    }
+
+    @Test
+    public void testFindAll() {
+        int page = 1;
+        int size = 10;
+        String users = helloService.findUsers(page, size);
+        System.out.println(users);
+    }
+
 }

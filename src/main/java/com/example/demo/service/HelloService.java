@@ -1,5 +1,10 @@
 package com.example.demo.service;
 
+import com.example.demo.model.User;
+import org.springframework.data.domain.Page;
+
+import java.util.List;
+
 /**
  * HelloService接口
  *
@@ -8,7 +13,8 @@ package com.example.demo.service;
 public interface HelloService {
     /**
      * sayHello方法
-     *测试成功返回
+     * 测试成功返回
+     *
      * @param request 请求参数数据(JSON字符串)
      * @return 处理后的业务数据(JSON字符串)
      */
@@ -39,4 +45,11 @@ public interface HelloService {
      * @return 处理后的业务数据(JSON字符串)
      */
     String removeUser(String request);
+
+    /**
+     * 获取所有的用户
+     *分页
+     * @return
+     */
+    String findUsers(int page, int size);
 }
